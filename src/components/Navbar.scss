@@ -1,0 +1,15 @@
+nav {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-color: hsla(0, 0, 50%, 0.5);
+	z-index: 100;
+	ul {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	a {
+		color: white;
+	}
+}

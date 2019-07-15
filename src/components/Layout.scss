@@ -1,0 +1,18 @@
+.layout {
+	display: flex;
+	&__sidebar {
+		background-color: orange;
+		width: 10rem;
+	}
+	&__content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: blue;
+		flex: auto;
+	}
+	&__sidebar,
+	&__content {
+		height: 100vh;
+	}
+}

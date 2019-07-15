@@ -1,0 +1,43 @@
+.dropdown {
+	$border-size: 0.1rem;
+	$padding-size: 0.4rem;
+	$height: 1rem;
+
+	position: relative;
+	box-sizing: border-box;
+
+	&__selected {
+		border: $border-size solid gray;
+		background-color: lightgray;
+		height: $height;
+		padding: $padding-size 0;
+	}
+
+	&__list {
+		display: none;
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		text-align: left;
+		max-height: 20rem;
+		overflow-y: auto;
+		position: absolute;
+		border: $border-size solid gray;
+		width: 100%;
+		top: $height + ($border-size) + ($padding-size * 2);
+		box-sizing: border-box;
+		background-color: whitesmoke;
+		box-shadow: 0 1rem 1rem hsla(0, 0%, 0%, 0.2);
+	}
+
+	&__list--active {
+		display: block;
+	}
+
+	&__item {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		color: black;
+	}
+}
