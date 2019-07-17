@@ -1,43 +1,47 @@
-import React, { useState } from 'react';
-import { IDropDownItem } from '../models/Models';
-import './Dropdown.scss';
+import React, { useState, useEffect } from 'react';
+import { IDropDownCheckboxItem } from '../models/Models';
+import './DropDownCheckbox.scss';
 
-const Dropdown: React.FC<{ items: IDropDownItem[] }> = ({ items }) => {
-	//const [items, setItems] = useState(dropdownItems);
-	let selectedItem: IDropDownItem = {
-		id: 0,
-		name: 'Select Item',
-	};
+interface DropDownProps {
+	items: IDropDownCheckboxItem[];
+	onSelection: (selectedItems: IDropDownCheckboxItem[]) => void;
+}
 
-	let selectedItems: IDropDownItem[] = [];
-	//let isShowing: boolean = false;
+const DropDownCheckbox: React.FC<DropDownProps> = ({ items, onSelection }) => {
+	const [selectedItems, setSelectedItems] = useState<IDropDownCheckboxItem[]>(
+		[],
+	);
+	const [isShowing, setIsShowing] = useState(false);
+
+	//let selectedItems: IDropDownCheckboxItem[] = [];
+
+	useEffect(() => {
+		onSelection(selectedItems);
+	});
 
 	const toggleList = () => {
 		setIsShowing(!isShowing);
 	};
-
-	const [isShowing, setIsShowing] = useState(false);
 
 	const toggleOption = (event: React.ChangeEvent) => {
 		const element = event.target as HTMLInputElement;
 		const isChecked = element.checked;
 		const id = element.getAttribute('id');
 		const item = items.filter(x => x.id === Number(id))[0];
-
 		if (isChecked) {
-			selectedItems.push(item);
+			setSelectedItems([...selectedItems, item]);
 		} else {
 			const index = selectedItems.indexOf(item);
-			selectedItems.splice(index, 1);
+			//selectedItems.splice(index, 1); // NEVER mutate state in React
+			//debugger;
+			setSelectedItems(selectedItems.filter(si => si.id !== item.id));
 		}
-		console.log(selectedItems);
-		//this.$emit('onSelectedItemsChanged', this.selectedItems);
 	};
 
 	return (
 		<div className="dropdown">
 			<div className="dropdown__selected" onClick={toggleList}>
-				{selectedItem.name}
+				{selectedItems.length}
 			</div>
 			<ul
 				className={`dropdown__list ${
@@ -61,4 +65,4 @@ const Dropdown: React.FC<{ items: IDropDownItem[] }> = ({ items }) => {
 	);
 };
 
-export default Dropdown;
+export default DropDownCheckbox;

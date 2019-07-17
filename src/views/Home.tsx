@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from '../logo.svg';
 import './Home.scss';
-import Dropdown from '../components/Dropdown';
 import { IDropDownItem } from '../models/Models';
 
 const Home: React.FC = () => {
@@ -18,7 +17,7 @@ const Home: React.FC = () => {
 				<p>
 					Edit <code>src/App.tsx</code> and save to reload.
 				</p>
-				<Dropdown items={sampleItems} />
+				{/* <Dropdown items={sampleItems} /> */}
 				<a
 					className="App-link"
 					href="https://reactjs.org"

@@ -9,3 +9,7 @@ export interface IDropDownItem {
 	id: number;
 	name: string;
 }
+
+export interface IDropDownCheckboxItem extends IDropDownItem {
+	isChecked: boolean;
+}
