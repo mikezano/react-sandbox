@@ -1,0 +1,27 @@
+.indicator {
+	border: 0.1rem solid #aaa;
+	border-radius: 0.5rem;
+	width: 10rem;
+	height: 15rem;
+	box-shadow: 0.1rem 0.1rem 0.2rem hsla(0, 0%, 0%, 0.3);
+	background-color: lightgray;
+	margin: 0 1rem;
+
+	&__value,
+	&__details {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__value {
+		font-size: 5rem;
+		font-weight: bold;
+		background-color: indianred;
+		height: 50%;
+		align-items: center;
+		border-radius: 0.4rem 0.4rem 0 0;
+	}
+	&__details {
+		border-top: none;
+	}
+}

@@ -1,10 +1,11 @@
 import React, { createContext, useState } from 'react';
 import Layout from '../components/Layout';
-import Sample from '../components/Sample';
 import DropDownCheckbox from '../components/DropDownCheckbox';
 import { IDropDownCheckboxItem } from '../models/Models';
 import DropDownApi from '../api/DropDownApi';
 import DisplaySelected from '../components/DisplaySelected';
+import Indicator from '../components/Indicator';
+import './Sandbox.scss';
 
 const Sandbox = () => {
 	const sampleItems: IDropDownCheckboxItem[] = [
@@ -31,7 +32,14 @@ const Sandbox = () => {
 				sidebar={
 					<DropDownCheckbox items={sampleItems} onSelection={getSelectedItem} />
 				}
-				content={<DisplaySelected item={selectedItem} />}
+				content={
+					<div className="indicator-container">
+						{/* <DisplaySelected item={selectedItem} /> */}
+						<Indicator value={1} details={'Hi'} hasGraph={false} />
+						<Indicator value={100} details={'One hundred'} hasGraph={false} />
+						<Indicator value={32} details={'Thirty-two'} hasGraph={true} />
+					</div>
+				}
 			/>
 		</DropDownApi.Provider>
 	);
