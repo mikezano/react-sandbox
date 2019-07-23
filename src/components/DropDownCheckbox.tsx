@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import { IDropDownCheckboxItem } from '../models/Models';
 import './DropDownCheckbox.scss';
 
 interface DropDownProps {
 	items: IDropDownCheckboxItem[];
 	onSelection: (selectedItems: IDropDownCheckboxItem[]) => void;
+	display?: ReactNode | null;
 }
 
-const DropDownCheckbox: React.FC<DropDownProps> = ({ items, onSelection }) => {
+const DropDownCheckbox: React.FC<DropDownProps> = ({
+	items,
+	onSelection,
+	display,
+}) => {
 	const [selectedItems, setSelectedItems] = useState<IDropDownCheckboxItem[]>(
 		[],
 	);
@@ -51,12 +56,18 @@ const DropDownCheckbox: React.FC<DropDownProps> = ({ items, onSelection }) => {
 				{items.map(item => {
 					return (
 						<li className="dropdown__item" key={item.id}>
-							<input
-								type="checkbox"
-								id={String(item.id)}
-								onChange={e => toggleOption(e)}
-							/>
-							<label htmlFor={String(item.id)}>{item.name}</label>
+							{display === null ? (
+								<div>
+									<input
+										type="checkbox"
+										id={String(item.id)}
+										onChange={e => toggleOption(e)}
+									/>
+									<label htmlFor={String(item.id)}>{item.name}</label>
+								</div>
+							) : (
+								display
+							)}
 						</li>
 					);
 				})}

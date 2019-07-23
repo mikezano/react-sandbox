@@ -13,3 +13,10 @@ export interface IDropDownItem {
 export interface IDropDownCheckboxItem extends IDropDownItem {
 	isChecked: boolean;
 }
+
+export interface IFruit extends IDropDownCheckboxItem {
+	icon: string;
+	quantity: number;
+	price: number;
+	origin: string;
+}

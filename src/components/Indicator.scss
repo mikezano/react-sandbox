@@ -6,6 +6,12 @@
 	box-shadow: 0.1rem 0.1rem 0.2rem hsla(0, 0%, 0%, 0.3);
 	background-color: lightgray;
 	margin: 0 1rem;
+	transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+	&:hover {
+		transform: scale(1.01);
+		box-shadow: 0.2rem 0.2rem 0.3rem hsla(0, 0%, 0%, 0.3);
+	}
 
 	&__value,
 	&__details {
